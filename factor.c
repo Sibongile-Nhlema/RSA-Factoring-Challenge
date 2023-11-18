@@ -13,6 +13,7 @@ void factorise(int n)
 	{
 		printf("%d=%d*%d\n", n, n / 2, 2);
 		n /= 2;
+		return;
 	}
 	for (p = 3; p <= sqrt(n); p += 2)
 	{
@@ -20,7 +21,8 @@ void factorise(int n)
 		{
 			q = n / p;
 			printf("%d=%d*%d\n", n, q, p);
-			n = q;
+			return;
 		}
 	}
+	printf("%d=%d*%d\n", n, n, 1);
 }
