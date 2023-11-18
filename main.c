@@ -3,6 +3,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void factorise(char *line);
+
 /**
  * main - factorize as many numbers as possible into
  * a product of two smaller numbers
@@ -12,7 +14,8 @@
 int main(int argc, char *argv[])
 {
 	char line[500];
-	char *filename;
+	const char *filename;
+	FILE *file;
 	unsigned int line_number = 1;
 
 	if (argc != 2)
@@ -21,8 +24,8 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 	filename = argv[1];
-	globals.file = fopen(filename, "r");
-	if (globals.file == NULL)
+	file = fopen(filename, "r");
+	if (file == NULL)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
@@ -32,16 +35,6 @@ int main(int argc, char *argv[])
 		factorise(line);
 		line_number++;
 	}
-	free(line);
 	fclose(file);
 	return (0);
-}
-
-/**
- * factorise - Factorize as many numbers as possible into a product of two smaller numbers
- */
-
-int factorise(char line)
-{
-	
 }
