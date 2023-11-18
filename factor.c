@@ -10,13 +10,21 @@ void factorise(char *line)
 	int n, p, q;
 
 	n = atoi(line);
-	printf("This is the number %d\n", n);
-
 	for (p = 2; p <= n; p++)
 	{
 		if (n % p == 0)
 		{
-			printf("%d is a factor of %d\n", p, n);
+			for (q = 2; q <= n; q++)
+			{
+				if (n % q == 0)
+				{
+					if (p * q == n)
+					{
+						printf("%d = %d * %d\n", n, p, q);
+					}
+					break;
+				}
+			}
 		}
 	}
 
