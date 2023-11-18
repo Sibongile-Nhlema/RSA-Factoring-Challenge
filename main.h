@@ -5,8 +5,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include <gmp.h>
+#include <string.h>
 
-void factorise(unsigned long long int n);
+void factorise(char *line);
 
 #endif 
