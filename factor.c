@@ -5,24 +5,24 @@
  * n: number on line being read
  */
 
-void factorise(int n)
+void factorise(unsigned long long int n)
 {
-	int p, q;
+	unsigned long long int p, q;
 
 	if (n % 2 == 0)
 	{
-		printf("%d=%d*%d\n", n, n / 2, 2);
+		printf("%llu=%llu*%llu\n", n, n / (unsigned long long int)2, (unsigned long long int)2);
 		n /= 2;
 		return;
 	}
-	for (p = 3; p <= sqrt(n); p += 2)
+	for (p = 3; p * p <= n; p += 2)
 	{
 		if (n % p == 0)
 		{
 			q = n / p;
-			printf("%d=%d*%d\n", n, q, p);
+			printf("%llu=%llu*%llu\n", n, q, p);
 			return;
 		}
 	}
-	printf("%d=%d*%d\n", n, n, 1);
+	printf("%llu=%llu*%llu\n", n, n, (unsigned long long int)1);
 }

@@ -9,9 +9,10 @@
 int main(int argc, char *argv[])
 {
 	char line[500];
+	char *end;
 	const char *filename;
 	FILE *file;
-	int n;
+	unsigned long long int n;
 
 	if (argc != 2)
 	{
@@ -27,7 +28,7 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		n = atoi(line);
+		n = strtoull(line, &end, 10);
 		factorise(n);
 	}
 	fclose(file);

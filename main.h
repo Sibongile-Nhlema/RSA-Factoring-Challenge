@@ -7,6 +7,6 @@
 #include <stddef.h>
 #include <gmp.h>
 
-void factorise(int n);
+void factorise(unsigned long long int n);
 
 #endif 
