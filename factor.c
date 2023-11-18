@@ -2,30 +2,25 @@
 
 /**
  * factorise - Factorize as many numbers as possible into a product of two smaller numbers
- * @line: line being read
+ * n: number on line being read
  */
 
-void factorise(char *line)
+void factorise(int n)
 {
-	int n, p, q;
+	int p, q;
 
-	n = atoi(line);
-	for (p = 2; p <= n; p++)
+	if (n % 2 == 0)
 	{
-		if (n % p == 0)
+		printf("%d = %d * %d\n", n, 2, n / 2);
+		n /= 2;
+	}
+	for (p = 3; p <= sqrt(n); p += 2)
+	{
+		while (n % p == 0)
 		{
-			for (q = 2; q <= n; q++)
-			{
-				if (n % q == 0)
-				{
-					if (p * q == n)
-					{
-						printf("%d = %d * %d\n", n, p, q);
-					}
-					break;
-				}
-			}
+			q = n / p;
+			printf("%d = %d * %d\n", n, p, q);
+			n = q;
 		}
 	}
-
 }

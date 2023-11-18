@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	char line[500];
 	const char *filename;
 	FILE *file;
-	unsigned int line_number = 1;
+	int n;
 
 	if (argc != 2)
 	{
@@ -27,8 +27,8 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		factorise(line);
-		line_number++;
+		n = atoi(line);
+		factorise(n);
 	}
 	fclose(file);
 	return (0);

@@ -7,6 +7,6 @@
 #include <stddef.h>
 #include <gmp.h>
 
-void factorise(char *line);
+void factorise(int n);
 
 #endif 
