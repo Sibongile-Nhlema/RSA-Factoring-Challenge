@@ -1,9 +1,4 @@
 #include "main.h"
-#include <math.h>
-#include <stdio.h>
-#include <stdlib.h>
-
-void factorise(char *line);
 
 /**
  * main - factorize as many numbers as possible into
