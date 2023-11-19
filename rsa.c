@@ -4,7 +4,8 @@
 #include <stddef.h>
 #include <string.h>
 
-void factorise(char *line);
+unsigned long long int findPrimeFactor(unsigned long long int n);
+void rsa(char *line);
 
 /**
  * main - factorize as many numbers as possible into
@@ -34,18 +35,18 @@ int main(int argc, char *argv[])
 	}
 	while (fgets(line, sizeof(line), file) != NULL)
 	{
-		factorise(line);
+		rsa(line);
 	}
 	fclose(file);
 	return (0);
 }
 
 /**
- * factorise - Factorize a number into a product of two smaller numbers
+ * rsa - Factorize a number into a product of two smaller numbers
  * @line: number on line being read
  */
 
-void factorise(char *line)
+void rsa(char *line)
 {
 	char *end;
 	unsigned long long int n, p, q;
@@ -53,27 +54,33 @@ void factorise(char *line)
 	if (strlen(line) < 20)
 	{
 		n = strtoull(line, &end, 10);
-		if (n % 2 == 0)
-		{
-			printf("%llu=%llu*%llu\n", n, n / (unsigned long long int)2,
-					(unsigned long long int)2);
-			n /= 2;
-			return;
-		}
-		for (p = 3; p * p <= n; p += 2)
-		{
-			if (n % p == 0)
-			{
-				q = n / p;
-				printf("%llu=%llu*%llu\n", n, q, p);
-				return;
-			}
-		}
-		printf("%llu=%llu*%llu\n", n, n, (unsigned long long int)1);
+		p = findPrimeFactor(n);
+		q = n / p;
+		printf("%llu=%llu*%llu\n", n, q, p);
 
 	}
 	else
 	{
 		printf("too big\n");
 	}
+}
+
+/**
+ * findPrimeFactor - find prime factor
+ * @n: number
+ * Return: factor
+ */
+
+unsigned long long int findPrimeFactor(unsigned long long int n)
+{
+	unsigned long long int p;
+
+	for (p = 2; p * p <= n; p++)
+	{
+		if (n % p == 0)
+		{
+			return (p);
+		}
+	}
+	return (n);
 }
